@@ -32,14 +32,14 @@ body {
 
 .headermenu {
     display: flex;
-    gap: 4.375rem; /* 70px / 16 = 4.375rem */
+    gap: 4.rem; /* 70px / 16 = 4.375rem */
     align-items: center;
 }
 
 .headermenulink {
     color: var(--color-texto);
     font-family: var(--fuente-krona);
-    font-size: 1.5rem; /* 24px / 16 = 1.5rem */
+    font-size: 1rem; /* 24px / 16 = 1.5rem */
     font-weight: 600;
     display: flex;
     justify-content: space-between;
