@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 :root {
-    --color-fondo: #10454F;
-    --color-titulo: #000000;
-    --color-footer: #506266;
-    --color-texto: #ccffee;
-    --color-recuadros: #A3AB78;
-    --color-recudros2: #BDE038;
+    /* Nueva paleta de colores */
+    --color-fondo: #1a2e35;        /* Azul oscuro profundo (fondo principal) */
+    --color-titulo: #e0f7fa;       /* Blanco azulado muy claro (títulos) */
+    --color-texto: #b2ebf2;        /* Azul claro suave (texto normal) */
+    --color-destacado: #80deea;    /* Azul turquesa (elementos destacados) */
+    --color-recuadros: #4db6ac;    /* Verde azulado (botones/recuadros) */
+    --color-recuadros2: #26c6da;   /* Azul turquesa brillante (hover/énfasis) */
+    --color-footer: #006064;       /* Azul oscuro intenso (footer) */
+    --color-blanco: #ffffff;       /* Blanco puro */
+    --color-gris-claro: #eceff1;   /* Gris muy claro (fondos de tarjetas) */
+    --color-sombra: rgba(0, 75, 80, 0.2); /* Sombra azulada */
 
+    /* Fuentes */
     --fuente-monserrat: 'Montserrat', sans-serif;
     --fuente-krona: 'Krona One', sans-serif;
 }
@@ -16,6 +23,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-size: 16px;
 }
 
 body {
@@ -23,99 +31,248 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: var(--fuente-monserrat);
+    color: var(--color-texto);
+    line-height: 1.6;
 }
 
+/* Header */
 .header {
     background-color: var(--color-footer);      
-    padding: 1% 0% 1% 5%; 
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px var(--color-sombra);
 }
 
 .headermenu {
     display: flex;
-    gap: 4.rem; /* 70px / 16 = 4.375rem */
-    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1rem;
+    flex-wrap: wrap;
 }
 
 .headermenulink {
-    color: var(--color-texto);
+    color: var(--color-titulo);
     font-family: var(--fuente-krona);
-    font-size: 1rem; /* 24px / 16 = 1.5rem */
+    font-size: 1rem;
     font-weight: 600;
-    display: flex;
-    justify-content: space-between;
+    padding: 0.5rem 1rem;
     text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
 }
 
+.headermenulink:hover {
+    background-color: var(--color-recuadros2);
+    color: var(--color-fondo);
+}
+
+/* Main content */
+.main-container {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Common styles */
 .Titulo {
-    display: flex;
     font-family: var(--fuente-krona);
-    font-size: 2.5rem; /* 40px / 16 = 2.5rem */
+    font-size: 2rem;
     color: var(--color-titulo);
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: auto;
-    margin-top: 3%;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .TextoPresentacion {
-    display: flex;
-    font-family: var(--fuente-monserrat);
-    font-size: 1.5rem; /* 24px / 16 = 1.5rem */
+    font-size: 1.1rem;
     color: var(--color-texto);
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: auto;
-    margin-top: 2.5%;
+    margin-bottom: 1.5rem;
+    text-align: justify;
 }
 
+/* Curriculum specific styles */
+.curriculum-container {
+    background-color: var(--color-fondo);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--color-sombra);
+    color: var(--color-texto);
+    margin: 2rem auto;
+    max-width: 800px;
+    border: 1px solid var(--color-recuadros);
+}
+
+.section-title {
+    color: var(--color-destacado);
+    border-bottom: 2px solid var(--color-recuadros);
+    padding-bottom: 0.5rem;
+    margin: 2rem 0 1rem;
+    font-family: var(--fuente-krona);
+    font-size: 1.5rem;
+}
+
+.job-entry {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border-left: 4px solid var(--color-recuadros2);
+    transition: transform 0.3s ease;
+}
+
+.job-entry:hover {
+    transform: translateY(-3px);
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.job-title {
+    font-weight: bold;
+    color: var(--color-titulo);
+    margin-bottom: 0.3rem;
+}
+
+.company {
+    font-style: italic;
+    color: var(--color-recuadros);
+    margin-bottom: 0.3rem;
+}
+
+.job-date {
+    color: var(--color-recuadros);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+/* Links section */
 .Contenedor__enlaces {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    gap: 1.875rem; /* 30px / 16 = 1.875rem */
-    margin-top: 2.5%;
+    gap: 1.5rem;
+    margin: 2rem 0;
 }
 
 .Contenedor__enlaces__subtitulo {
     font-family: var(--fuente-krona);
-    font-size: 2rem; /* 32px / 16 = 2rem */
+    font-size: 1.5rem;
     color: var(--color-titulo);
-    padding: auto;
-    margin-top: 2.5%;
-    flex-direction: column;
-    align-items: center;
+    margin: 0;
 }
 
 .Contenedor__enlaces__link {
-    width: 23.625rem; /* 378px / 16 = 23.625rem */
+    width: 100%;
+    max-width: 300px;
     background-color: var(--color-recuadros);
     text-align: center;
-    padding: 1.34375rem 0; /* 21.5px / 16 = 1.34375rem */
-    border-radius: 0.625rem; /* 10px / 16 = 0.625rem */
+    padding: 1rem 0;
+    border-radius: 0.625rem;
     font-family: var(--fuente-monserrat);
-    font-size: 1.25rem; /* 20px / 16 = 1.25rem */
+    font-size: 1.1rem;
     font-weight: 700;
-    color: var(--color-texto);
+    color: var(--color-fondo);
     text-decoration: none;
-    border: 0.125rem solid #000; /* 2px / 16 = 0.125rem */
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
     display: flex;
     justify-content: center;
-    gap: 0.9375rem; /* 15px / 16 = 0.9375rem */
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .Contenedor__enlaces__link:hover {
-    background-color: var(--color-recudros2);
+    background-color: var(--color-recuadros2);
     color: var(--color-fondo);
+    transform: translateY(-2px);
+    border-color: var(--color-destacado);
 }
 
+/* Footer */
 .footer {
     background-color: var(--color-footer);
     display: flex;
-    justify-content: center;        
-    padding: 2rem; /* 24px / 16 = 1.5rem */
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
     color: var(--color-texto);
-    font-family: var(--fuente-monserrat);  
+    font-family: var(--fuente-monserrat);
     text-align: center;
-    margin-top: auto; /* Asegura que el footer se mantenga en la parte inferior */
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .Titulo {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .headermenu {
+        gap: 1rem;
+    }
+    
+    .main-container {
+        padding: 1rem;
+    }
+    
+    .curriculum-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .Titulo {
+        font-size: 1.5rem;
+    }
+    
+    .TextoPresentacion {
+        font-size: 1rem;
+    }
+    
+    .headermenu {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .headermenulink {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .job-entry {
+        padding: 0.8rem;
+    }
+    
+    .Contenedor__enlaces__link {
+        max-width: 100%;
+    }
 }
